@@ -8,8 +8,9 @@
 
 class DriveTrain : public Subsystem {
 private:
-	Talon* left;
-	Talon* right;
+	TalonSRX* left;
+	TalonSRX* right;
+	//What do I do with the encoders? Do I still declare them here?
 	Encoder* leftEncoder;
 	Encoder* rightEncoder;
 	double mult;

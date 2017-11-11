@@ -1,8 +1,8 @@
 #include "DriveTrain.h"
 #include "../RobotMap.h"
 
-DriveTrain::DriveTrain() : Subsystem("DriveTrain"), left(new Talon(0)), right(
-		                   new Talon(1)), leftEncoder(new Encoder(
+DriveTrain::DriveTrain() : Subsystem("DriveTrain"), left(new TalonSRX(0)), right(
+		                   new TalonSRX(1)), leftEncoder(new Encoder(
 		                   ENCODER_LEFT_1, ENCODER_LEFT_2)), rightEncoder(
 		                   ENCODER_RIGHT_1, ENCODER_RIGHT_2), mult(1.0), ticksToDistance(114) {
 	//need to check the port numbers
@@ -102,6 +102,7 @@ void DriveTrain::tankDrive(double leftVal, double rightVal)
 	left->Set(leftVal);
 	right->Set(-rightVal);
 }
+//may need limit method
 
 double DriveTrain::getDistance() {
 	// Average of both encoders (must negate to get proper direction)
@@ -116,5 +117,3 @@ double DriveTrain::getRate() {
 			- (double) ((rightEncoder->GetRate()) / ticksToDistance)) / 2.0;
 
 }
-
-//may need the Limit method
